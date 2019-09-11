@@ -15,9 +15,9 @@ class VendorTest < Minitest::Test
   end
 
   def test_has_attributes
-    expected = {}
+    expect_empty_hash = {}
     assert_equal "Rocky Mountain Fresh", @vendor.name
-    assert_equal expected, @vendor.inventory
+    assert_equal expect_empty_hash, @vendor.inventory
   end
 
   def test_stock_check_returns_empty
@@ -43,5 +43,5 @@ class VendorTest < Minitest::Test
 
     assert_equal expected, @vendor.inventory
   end
-  
+
 end
