@@ -7,7 +7,6 @@ class Vendor
   end
 
   def stock(item, quantity)
-    #if item doesn't already exist
     if @inventory.has_key?(item)
       @inventory[item] += quantity
     elsif @inventory.has_key?(item) == false
