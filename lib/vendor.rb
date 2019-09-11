@@ -14,6 +14,22 @@ class Vendor
     end
   end
 
+  def sell_helper(item, quantity)
+    sold = 0
+    if @inventory.has_key?(item)
+      if @inventory[item] == quantity
+        @inventory[item] -= quantity
+        return true
+      elsif @inventory[item] <= quantity
+        sold = @inventory[item].upto(0)
+        @inventory[item] -= sold
+        return sold
+      end
+    else
+      false
+    end
+  end
+
   def check_stock(item)
     @inventory[item]
   end

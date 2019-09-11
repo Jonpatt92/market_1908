@@ -57,6 +57,24 @@ attr_reader :name, :vendors, :vendor_names #:total_inventory
     end
     total_inventory
   end
+
+  def sell(item, quantity)
+    market_inventory = self.total_inventory
+    want_to_sell = quantity
+    already_sold = 0
+    if market_inventory.each |thing, amount|
+      if thing 
+    until already_sold == quantity
+      @vendors.each do |vendor|
+        if vendor.sell_helper(item, quantity) == true
+          already_sold = quantity
+        elsif vendor.sell_helper(item, quantity) == Integer
+          already_sold += vendor.sell_helper(item, quantity)
+        end
+
+  end
+
+
 end
 
 # def vendor_names
@@ -65,4 +83,32 @@ end
 #     vendors_names << vendor.name
 #   end
 # vendors_names.uniq!
+# end
+
+# def sell(item, quantity)
+#   market_inventory = self.total_inventory
+#   want_to_sell = quantity
+#   already_sold = 0
+#   if market_inventory[item] < quantity
+#     false
+#   elsif market_inventory[item] > quantity
+#     until already_sold == want_to_sell
+#       if @vendors.first.inventory[item] != 0
+#         until @vendors.first.inventory[item] == 0
+#           already_sold += @vendors.first.inventory[item].truncate(quantity)
+#           @vendors.first.inventory[item] -= @vendors.first.inventory[item].truncate(quantity)
+#         end
+#       elsif @vendors[1].inventory[item] != 0
+#         until @vendors[1].inventory[item] == 0
+#           already_sold += @vendors[1].inventory[item].truncate(quantity)
+#           @vendors[1].inventory[item] -= @vendors[1].inventory[item].truncate(quantity)
+#         end
+#       elsif @vendors[2].inventory[item] != 0
+#         until @vendors[2].inventory[item] == 0
+#           already_sold += @vendors[2].inventory[item].truncate(quantity)
+#           @vendors[2].inventory[item] -= @vendors[2].inventory[item].truncate(quantity)
+#         end
+#       end
+#     end
+#   end
 # end
